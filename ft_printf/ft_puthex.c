@@ -1,20 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nukanjan <nukanjan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/18 13:52:59 by nukanjan          #+#    #+#             */
+/*   Updated: 2026/11/18 17:50:42 by nukanjan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void ft_puthex(unsigned int n,char c)
+int	ft_puthex(unsigned long n, char c)
 {
-	char hex[16] = "0123456789abcdef";
+	char	*hex;
+	int		res;
+
+	res = 0;
 	if (n >= 16)
-		ft_puthex(n / 16,c);
+		res += ft_puthex(n / 16, c);
 	if (c == 'X')
-		ft_putchar(hex[n % 16] - 32);
+	{
+		hex = "0123456789ABCDEF";
+		res += ft_putchar(hex[n % 16]);
+	}
 	else
-		ft_putchar(hex[n % 16]);
+	{
+		hex = "0123456789abcdef";
+		res += ft_putchar(hex[n % 16]);
+	}
+	return (res);
 }
 
-//int main()
-//{
-//	unsigned int num = 255;
-//	ft_puthex(num,'x');
-//	ft_puthex(num,'X');
-//	return 0;
-//}
+// int main()
+// {
+// 	unsigned int num = 255;
+// 	ft_puthex(num,'x');
+// 	ft_puthex(num,'X');
+// 	return 0;
+// }

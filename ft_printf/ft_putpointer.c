@@ -1,9 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nukanjan <nukanjan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/18 13:53:52 by nukanjan          #+#    #+#             */
+/*   Updated: 2026/11/18 17:49:56 by nukanjan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void ft_putpointer(unsigned long n)
+int	ft_putpointer(unsigned long n)
 {
-	ft_putstr("0x");
-	ft_puthex(n,'x');
+	int	res;
+
+	res = 0;
+	if (n == 0)
+		return (res += ft_putstr("(nil)"));
+	res += ft_putstr("0x");
+	res += ft_puthex(n, 'x');
+	return (res);
 }
 
 //int main()
